@@ -1,0 +1,53 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.param vdd = 1.8 
+
+.param vlow = 'vdd*0.2'
+.param vhigh = 'vdd*0.8'
+.param vmid = 'vdd*0.5'
+
+vdd vdd 0 dc {vdd}
+vin vin 0 pulse(0 {vdd} 0 20p 20p 1ns 2ns)
+
+xnot1 vin vout vdd 0 not1
+xnot2 vout nc vdd 0 not1
+
+.include not1.cir
+
+.tran 1ps 3ns 0 1ps
+
+.meas tran trise trig v(vout) val={vlow} rise=1 targ v(vout) val={vhigh} rise=1
+.meas tran tfall trig v(vout) val={vhigh} fall=1 targ v(vout) val={vlow} fall=1
+
+.meas tran tplh trig v(vin) val={vmid} fall=1 targ v(vout) val={vmid} rise=1
+.meas tran tphl trig v(vin) val={vmid} rise=1 targ v(vout) val={vmid} fall=1
+
+.control
+run
+
+set color0 = white
+set color1 = black
+set color2 = red
+
+plot vin vout
+
+dc vin 0 1.8 0.01
+
+plot v(vout) vs v(vin)
+
+let vout = v(vout)
+let vin = v(vin)
+
+let slope = deriv(v(vout))
+
+meas dc vm find vin when vout = vin
+meas dc vil find vin when slope = -1 cross = 1
+meas dc vih find vin when slope = -1 cross = 2
+
+let nml = vil
+print nml
+
+let nmh = 1.8 - vih
+print nmh
+
+.endc

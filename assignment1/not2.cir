@@ -1,0 +1,6 @@
+.include not1.cir
+
+.subckt not2 vin vout vdd vss
+xnot1 vin vout vdd vss not1
+xnot2 vin vout vdd vss not1
+.ends
