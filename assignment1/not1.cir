@@ -1,4 +1,6 @@
-.subckt not1 vin vout vdd vss
-xmp vout vin vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.26043 as=0.378129 ad=0.378129 ps=3.12086 pd=3.12086
-xmn vout vin vss vss sky130_fd_pr__nfet_01v8 l=0.15 w=0.42 as=0.126 ad=0.126 ps=1.44 pd=1.44
+.subckt not1 vin vout vdd vss l=0.15 wp=1.224 wn=0.42
+xmp vout vin vdd vdd sky130_fd_pr__pfet_01v8 l={l} w={wp} as={2*{wp}*{l}} ad={2*{wp}*{l}} ps={2*({wp} + 2*{l})} pd={2*({wp} + 2*{l})}
+xmn vout vin vss vss sky130_fd_pr__nfet_01v8 l={l} w={wn} as={2*{wn}*{l}} ad={2*{wn}*{l}} ps={2*({wn} + 2*{l})} pd={2*({wn} + 2*{l})}
+c3 vin vss 0.384f
+c2 vout vss 0.576f
 .ends

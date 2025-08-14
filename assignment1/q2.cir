@@ -13,6 +13,7 @@ xnot1 vin vout vdd 0 not2
 xnot2 vout nc vdd 0 not1
 
 .include not2.cir
+.include not1.cir
 
 .tran 1ps 3ns 0 1ps
 
