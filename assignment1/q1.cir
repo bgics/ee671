@@ -24,16 +24,20 @@ xnot2 vout nc vdd 0 not1
 
 .control
 run
+set gnuplot_terminal=png/quit
 
-set color0 = white
-set color1 = black
-set color2 = red
+let tpavg = (tplh + tphl) / 2
 
-plot vin vout
+gnuplot q1_vout_vin vin vout
++ title 'vout vs vin'
++ xlabel 'time (sec)' ylabel 'voltage (v)'
 
 dc vin 0 1.8 0.01
 
-plot v(vout) vs v(vin)
+set nolegend
+gnuplot q1_dc_transfer_curve v(vout) vs v(vin)
++ title 'vout vs vin'
++ xlabel 'vin (v)' ylabel 'vout (v)'
 
 let vout = v(vout)
 let vin = v(vin)

@@ -20,6 +20,7 @@
             default = pkgs.mkShell {
               buildInputs = with pkgs; [
                 ngspice
+                gnuplot
                 magic
                 open_pdks
               ];
