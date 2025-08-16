@@ -26,8 +26,6 @@ xnot2 vout nc vdd 0 not1
 run
 set gnuplot_terminal=png/quit
 
-let tpavg = (tplh + tphl) / 2
-
 gnuplot q1_vout_vin vin vout
 + title 'vout vs vin'
 + xlabel 'time (sec)' ylabel 'voltage (v)'
