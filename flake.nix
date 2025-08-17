@@ -14,6 +14,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
           magic = import ./magic.nix { inherit pkgs; };
           open_pdks = import ./open_pdks.nix { inherit pkgs; };
+          netgen = import ./netgen.nix { inherit pkgs; };
         in
         {
           devShells = {
@@ -23,6 +24,7 @@
                 gnuplot
                 magic
                 open_pdks
+                netgen
               ];
               shellHook = ''
                 export PDK_ROOT=${open_pdks}/share/pdk
