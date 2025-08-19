@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, magic, ... }:
 let
   sky130_fd_pr = pkgs.fetchgit {
     url = "https://github.com/efabless/skywater-pdk-libs-sky130_fd_pr";
@@ -107,7 +107,7 @@ pkgs.stdenv.mkDerivation {
   };
 
   nativeBuildInputs = with pkgs; [
-    (import ./magic.nix { inherit pkgs; })
+    magic
     pythonWithPackages
     bash
     coreutils

@@ -12,9 +12,22 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          magic = import ./magic.nix { inherit pkgs; };
-          open_pdks = import ./open_pdks.nix { inherit pkgs; };
-          netgen = import ./netgen.nix { inherit pkgs; };
+          tcl = import ./tcl.nix { inherit pkgs; };
+          tk = import ./tk.nix { inherit pkgs tcl; };
+
+          magic =
+            if system == "x86_64-linux" then
+              import ./magic.nix { inherit pkgs; }
+            else
+              import ./magic-mac.nix { inherit pkgs tcl tk; };
+
+          netgen =
+            if system == "x86_64-linux" then
+              import ./netgen.nix { inherit pkgs; }
+            else
+              import ./netgen.nix { inherit pkgs tcl tk; };
+
+          open_pdks = import ./open_pdks.nix { inherit pkgs magic; };
         in
         {
           devShells = {
@@ -23,9 +36,10 @@
                 ngspice
                 gnuplot
                 magic
-                open_pdks
                 netgen
+                open_pdks
               ];
+
               shellHook = ''
                 export PDK_ROOT=${open_pdks}/share/pdk
               '';
