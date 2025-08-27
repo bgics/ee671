@@ -12,8 +12,8 @@ vin vin 0 pulse(0 {vdd} 0 20p 20p 1ns 2ns)
 xnot1 vin vout vdd 0 invx2
 xnot2 vout nc vdd 0 invx1
 
-.include invx2_pex.spice
-.include invx1_pex.spice
+.include invx2_layout_pex.spice
+.include ../INVX1/invx1_layout_pex.spice
 
 .tran 1ps 3ns 0 1ps
 
