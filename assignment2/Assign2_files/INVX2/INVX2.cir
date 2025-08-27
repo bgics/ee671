@@ -1,0 +1,28 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.param vdd = 1.8 
+
+.param vlow = 'vdd*0.2'
+.param vhigh = 'vdd*0.8'
+.param vmid = 'vdd*0.5'
+
+vdd vdd 0 dc {vdd}
+vin vin 0 pulse(0 {vdd} 0 20p 20p 1ns 2ns)
+
+xnot1 vin vout vdd 0 invx2
+xnot2 vout nc vdd 0 invx1
+
+.include invx2_pex.spice
+.include invx1_pex.spice
+
+.tran 1ps 3ns 0 1ps
+
+.meas tran trise trig v(vout) val={vlow} rise=1 targ v(vout) val={vhigh} rise=1
+.meas tran tfall trig v(vout) val={vhigh} fall=1 targ v(vout) val={vlow} fall=1
+
+.meas tran tplh trig v(vin) val={vmid} fall=1 targ v(vout) val={vmid} rise=1
+.meas tran tphl trig v(vin) val={vmid} rise=1 targ v(vout) val={vmid} fall=1
+
+.control
+run
+.endc
