@@ -1,0 +1,143 @@
+* NGSPICE file created from dfxtn.ext - technology: sky130A
+
+.subckt tg in out en enb vdd vss
+X0 in enb out vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=3024,156 d=3024,156
+X1 out enb in vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=3024,156 d=6048,312
+X2 out en in vss sky130_fd_pr__nfet_01v8 ad=0.1512 pd=1.56 as=0.1512 ps=1.56 w=0.42 l=0.15
+**devattr s=6048,312 d=6048,312
+X3 out enb in vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=6048,312 d=3024,156
+C0 out en 0.07151f
+C1 in en 0.00907f
+C2 in out 0.26956f
+C3 enb en 0.01993f
+C4 vdd en 0.00403f
+C5 enb out 0.05681f
+C6 vdd out 0.03231f
+C7 enb in 0.08671f
+C8 vdd in 0.12663f
+C9 vdd enb 0.15588f
+C10 en vss 0.29863f
+C11 out vss 0.1594f
+C12 in vss 0.19345f
+C13 enb vss 0.34859f
+C14 vdd vss 0.52519f
+.ends
+
+.subckt invx1 in out vdd vss
+X0 vdd in out vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=3024,156 d=3024,156
+X1 out in vdd vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=3024,156 d=6048,312
+X2 out in vss vss sky130_fd_pr__nfet_01v8 ad=0.1512 pd=1.56 as=0.1512 ps=1.56 w=0.42 l=0.15
+**devattr s=6048,312 d=6048,312
+X3 out in vdd vdd sky130_fd_pr__pfet_01v8 ad=0.1008 pd=1.04 as=0.1008 ps=1.04 w=0.42 l=0.15
+**devattr s=6048,312 d=3024,156
+C0 in out 0.09754f
+C1 vdd out 0.20135f
+C2 vdd in 0.19312f
+C3 out vss 0.2797f
+C4 in vss 0.46461f
+C5 vdd vss 0.5609f
+.ends
+
+.subckt latch in en tg_1/out vdd enb out tg_1/in vss
+Xtg_0 in tg_1/out en enb vdd vss tg
+Xtg_1 tg_1/in tg_1/out enb en vdd vss tg
+Xinvx1_0 tg_1/out out vdd vss invx1
+Xinvx1_1 out tg_1/in vdd vss invx1
+C0 out tg_1/in 0.24428f
+C1 enb tg_1/in 0.056f
+C2 vdd tg_1/in 0.39868f
+C3 enb out 0.04708f
+C4 enb vdd 0.00241f
+C5 vdd out 0.0617f
+C6 en tg_1/in 0.34398f
+C7 tg_1/out tg_1/in 0.22086f
+C8 en out 0.25622f
+C9 en enb 1.28793f
+C10 tg_1/out out 0.02423f
+C11 enb tg_1/out 0.0893f
+C12 en vdd 0.01201f
+C13 tg_1/out vdd 0.1387f
+C14 in tg_1/in 0.00354f
+C15 en tg_1/out 0.48927f
+C16 in out 0
+C17 in enb 0.07412f
+C18 in vdd 0.1056f
+C19 in en 0.09005f
+C20 in tg_1/out 0.01806f
+C21 tg_1/in vss 0.44879f
+C22 out vss 0.69348f
+C23 vdd vss 1.84585f
+C24 tg_1/out vss 0.69694f
+C25 enb vss 1.52166f
+C26 en vss 0.76901f
+C27 in vss 0.18603f
+.ends
+
+.subckt dfxtn d q c vdd vss
+Xlatch_0 latch_0/in c latch_0/tg_1/out vdd latch_1/en latch_1/in latch_0/tg_1/in vss
++ latch
+Xlatch_1 latch_1/in latch_1/en latch_1/tg_1/out vdd c invx1_2/in latch_1/tg_1/in vss
++ latch
+Xinvx1_0 d latch_0/in vdd vss invx1
+Xinvx1_1 c latch_1/en vdd vss invx1
+Xinvx1_2 invx1_2/in q vdd vss invx1
+C0 invx1_2/in latch_1/tg_1/in 0.0088f
+C1 vdd latch_1/tg_1/in 0.02553f
+C2 vdd invx1_2/in 0.01506f
+C3 c invx1_2/in 0.00124f
+C4 c vdd 0.07558f
+C5 latch_1/en latch_1/tg_1/in 0
+C6 latch_1/en invx1_2/in 0.00151f
+C7 latch_1/en vdd 0.02357f
+C8 latch_1/in latch_1/tg_1/in 0
+C9 c latch_1/tg_1/out 0
+C10 latch_0/tg_1/in vdd 0.0196f
+C11 latch_1/in invx1_2/in 0
+C12 latch_1/in vdd 0.06497f
+C13 latch_1/en latch_1/tg_1/out 0
+C14 latch_0/tg_1/in latch_1/tg_1/out 0
+C15 latch_1/in latch_1/tg_1/out 0.00598f
+C16 latch_1/en c 0.66205f
+C17 latch_0/tg_1/in c 0.01285f
+C18 latch_1/in c 0.0848f
+C19 d vdd 0.15914f
+C20 latch_0/tg_1/in latch_1/en 0.00222f
+C21 latch_1/in latch_1/en 0.04251f
+C22 latch_0/tg_1/out c 0
+C23 latch_1/in latch_0/tg_1/in 0.01207f
+C24 latch_0/tg_1/out latch_1/en 0
+C25 d c 0.36115f
+C26 q latch_1/tg_1/in 0.01338f
+C27 latch_0/in vdd 0.035f
+C28 latch_0/tg_1/out latch_1/in 0
+C29 q invx1_2/in 0
+C30 q vdd 0
+C31 d latch_1/en 0.09262f
+C32 d latch_0/tg_1/in 0
+C33 latch_0/in c 0.05593f
+C34 q c 0
+C35 d latch_0/tg_1/out 0.00288f
+C36 latch_0/in latch_1/en 0.06449f
+C37 latch_0/in latch_0/tg_1/in 0
+C38 q latch_1/en 0
+C39 latch_0/in latch_0/tg_1/out 0
+C40 latch_0/in d 0.00777f
+C41 q vss 0.26331f
+C42 d vss 0.47148f
+C43 latch_1/tg_1/in vss 0.46607f
+C44 invx1_2/in vss 1.13674f
+C45 vdd vss 5.57422f
+C46 latch_1/tg_1/out vss 0.70406f
+C47 c vss 2.18871f
+C48 latch_1/en vss 2.1965f
+C49 latch_0/tg_1/in vss 0.46291f
+C50 latch_1/in vss 0.86886f
+C51 latch_0/tg_1/out vss 0.70406f
+C52 latch_0/in vss 0.37981f
+.ends
+

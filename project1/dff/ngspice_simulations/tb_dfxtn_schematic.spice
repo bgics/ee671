@@ -1,0 +1,36 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.include dfxtn_layout_pex.spice
+.include invx1_schematic.spice
+
+* Supply voltages
+VDD vdd 0 DC 1.8
+VSS vss 0 DC 0
+
+* Clock source (10 ns period: 5 ns high, 5 ns low)
+VCLK c 0 PULSE(0 1.8 0 20p 20p 5n 10n)
+
+* Data input: single pulse aligned to falling edge (slightly before 10 ns)
+VD d 0 PULSE(0 1.8 12n 20p 20p 6n 20n)
+
+* Instantiate DFF
+XDF1 d q c vdd vss dfxtn
+
+* Load inverter at output
+XLOAD q nc vdd vss invx1_sch
+
+* Transient simulation
+.ic V(q) = 1.8
+.tran 10p 25n
+
+* Measure rise/fall time at Q_out (10% to 90% of VDD)
+.meas tran q_rise TRIG V(q) VAL=0.36 RISE=1 TARG V(q) VAL=1.44 RISE=1 TD=2n
+.meas tran q_fall TRIG V(q) VAL=1.44 FALL=1 TARG V(q) VAL=0.36 FALL=1 TD=2n
+
+* Output waveforms
+.control
+run
+plot V(c) V(d) V(q)
+.endc
+
+.end

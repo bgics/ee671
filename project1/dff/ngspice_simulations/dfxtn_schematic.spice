@@ -1,0 +1,16 @@
+.include invx1_schematic.spice 
+.include tg_schematic.spice 
+.include latch_schematic.spice 
+
+.subckt dfxtn d q c vdd vss
+
+Xinvclk c cb vdd vss invx1_sch
+
+Xinp d db vdd vss invx1_sch
+
+Xmaster db y c  cb vdd vss latch
+Xslave  y qb cb c  vdd vss latch 
+
+Xout qb q vdd vss invx1_sch
+
+.ends

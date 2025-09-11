@@ -1,0 +1,9 @@
+.subckt latch in out en enb vdd vss
+
+Xtg1 in na en  enb vdd vss tg 
+Xtg2 nb na enb en  vdd vss tg
+
+Xinv1 na  out vdd vss invx1_sch
+Xinv2 out nb  vdd vss invx1_sch
+
+.ends
