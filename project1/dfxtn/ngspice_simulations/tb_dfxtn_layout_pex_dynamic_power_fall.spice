@@ -1,0 +1,40 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.include dfxtn_layout_pex.spice
+.include invx1_schematic.spice
+
+VDD vdd 0 DC 1.8
+VSS vss 0 DC 0
+
+.param clk_half_slew = 5p
+.param d_half_slew = 500p
+.param d_rise_point = 9.5n
+
+VCLK clk 0 PWL(0n 1.8 2n 1.8 2.01n 0 4n 0 4.01n 1.8 {10n - clk_half_slew} 1.8 {10n + clk_half_slew} 0)
+VD d 0 PWL(0n 1.8 {d_rise_point - d_half_slew} 1.8 {d_rise_point + d_half_slew} 0)
+
+XDF1 d q clk vdd vss dfxtn
+CLOAD q vss 100f
+
+.ic V(q) = 0
+.tran 10p 20n
+
+.meas tran i_stable find i(vdd) at=7.5n
+.meas tran p_static param='abs(i_stable)*1.8'
+
+.meas tran energy_dynamic integ par('i(vdd) * v(vdd)') from=8n to=12n
+.meas tran p_dynamic param='(abs(energy_dynamic) / 4n) - p_static' 
+
+.control
+run
+
+set color0 = white
+set color1 = black
+set color2 = red
+
+* plot V(clk) V(d) 
+* plot V(q)
+* plot i(vdd)
+.endc
+
+.end

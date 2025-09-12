@@ -1,0 +1,60 @@
+* NGSPICE file created from a21oi.ext - technology: sky130A
+
+.subckt a21oi a1 a2 b1 vdd vss y
+X0 a_n1114_n4# a1 vdd vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=12000,520
+X1 a_n1114_n4# a2 vdd vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=12000,520 d=6000,260
+X2 a_n1114_n4# b1 y vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=12000,520
+X3 a_n1114_n4# a1 vdd vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=12000,520 d=6000,260
+X4 a_n1114_n4# b1 y vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=12000,520 d=6000,260
+X5 vss b1 y vss sky130_fd_pr__nfet_01v8 ad=0.135 pd=1.5 as=0.135 ps=1.5 w=0.45 l=0.15
+**devattr s=5400,300 d=5400,300
+X6 vdd a2 a_n1114_n4# vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=6000,260
+X7 a_n1114_n4# a2 vdd vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=12000,520
+X8 y b1 a_n1114_n4# vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=6000,260
+X9 vdd a1 a_n1114_n4# vdd sky130_fd_pr__pfet_01v8 ad=0.2 pd=1.73333 as=0.2 ps=1.73333 w=1 l=0.15
+**devattr s=6000,260 d=6000,260
+X10 vss a2 a_n1114_n224# vss sky130_fd_pr__nfet_01v8 ad=0.135 pd=1.5 as=0.0675 ps=0.75 w=0.45 l=0.15
+**devattr s=2700,150 d=5400,300
+X11 a_n1114_n224# a2 vss vss sky130_fd_pr__nfet_01v8 ad=0.0675 pd=0.75 as=0.135 ps=1.5 w=0.45 l=0.15
+**devattr s=5400,300 d=2700,150
+X12 y a1 a_n1114_n224# vss sky130_fd_pr__nfet_01v8 ad=0.135 pd=1.5 as=0.0675 ps=0.75 w=0.45 l=0.15
+**devattr s=2700,150 d=5400,300
+X13 a_n1114_n224# a1 y vss sky130_fd_pr__nfet_01v8 ad=0.0675 pd=0.75 as=0.135 ps=1.5 w=0.45 l=0.15
+**devattr s=5400,300 d=2700,150
+C0 b1 y 0.15376f
+C1 a1 y 0.08047f
+C2 a2 y 0
+C3 a1 b1 0.01136f
+C4 vdd y 0.22587f
+C5 a2 a1 0.0525f
+C6 vdd b1 0.13852f
+C7 vdd a1 0.40834f
+C8 a_n1114_n224# y 0.11833f
+C9 vdd a2 0.21072f
+C10 a_n1114_n224# b1 0
+C11 a_n1114_n4# y 0.50282f
+C12 a_n1114_n224# a1 0.14769f
+C13 a_n1114_n4# b1 0.07687f
+C14 a_n1114_n224# a2 0.04479f
+C15 a_n1114_n4# a1 0.29918f
+C16 a_n1114_n224# vdd 0.01848f
+C17 a_n1114_n4# a2 0.05658f
+C18 a_n1114_n4# vdd 1.28977f
+C19 a_n1114_n4# a_n1114_n224# 0.05679f
+C20 y vss 0.41345f
+C21 b1 vss 0.43351f
+C22 a1 vss 0.50924f
+C23 a2 vss 0.45217f
+C24 vdd vss 2.28043f
+C25 a_n1114_n224# vss 0.56133f
+C26 a_n1114_n4# vss 0.11157f
+.ends
+

@@ -1,0 +1,28 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.include dfxtn_layout_pex.spice
+.include invx1_schematic.spice
+
+VDD vdd 0 DC 1.8
+VSS vss 0 DC 0
+
+VCLK clk 0 DC 0
+VD   d   0 DC 1.8
+
+XU1 d q clk vdd vss dfxtn
+XLOAD q nc vdd vss invx1_sch 
+
+
+.tran 10p 20n
+
+.meas tran i_stable find i(vdd) at=19n
+.meas tran pstatic param='abs(i_stable)*1.8'
+
+.control
+run
+plot v(d) v(clk)
+plot v(q)
+plot i(vdd)
+.endc
+
+.end

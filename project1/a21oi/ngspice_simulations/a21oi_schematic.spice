@@ -1,0 +1,47 @@
+* SkyWater PDK
+* Simple 3 input logic
+
+.lib /home/hardik/Documents/iitb_electrical_engineering/sem8/ee671/new_pdk_sky/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+
+* The voltage sources:
+Vdd vdd gnd DC 1.8
+
+* Vi1 ina1 gnd pulse(0 1.8 0n 20p 20p 1n 2n)
+Vi1 ina1 gnd DC 1.8
+
+Vi2 ina2 gnd DC 0.0
+Vi3 inb1 gnd pulse(0 1.8 0n 20p 20p 1n 2n)
+
+xnot1 ina1 ina2 inb1 vdd gnd output comb_logic_3inp
+ 
+.subckt comb_logic_3inp a1 a2 b1 vdd vss y
+
+xpm_a1 na a1 vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=3 as=0.9 ad=0.9 ps=6.6 pd=6.6
+xpm_a2 na a2 vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=3 as=0.9 ad=0.9 ps=6.6 pd=6.6
+xpm_b1 y b1 na vdd sky130_fd_pr__pfet_01v8 l=0.15 w=3 as=0.9 ad=0.9 ps=6.6 pd=6.6
+
+
+xnm_a1 y a1 nb vss sky130_fd_pr__nfet_01v8 l=0.15 w=0.9 as=0.27 ad=0.27 ps=2.4 pd=2.4
+xnm_a2 nb a2 vss vss sky130_fd_pr__nfet_01v8 l=0.15 w=0.9 as=0.27 ad=0.27 ps=2.4 pd=2.4
+xnm_b1 y b1 vss vss sky130_fd_pr__nfet_01v8 l=0.15 w=0.45 as=0.135 ad=0.135 ps=1.5 pd=1.5
+
+.ends
+
+
+* Simulation command:
+.tran 1ps 2ns 0 10p
+
+.control
+run
+plot ina1 inb1 output
+
+* Measure rise time (20% to 80% of 1.8 V)
+meas tran rise_time trig v(output) val=0.36 rise=1 targ v(output) val=1.44 rise=1
+
+meas tran fall_time TRIG V(output) VAL=1.44 FALL=1 TARG V(output) VAL=0.36 FALL=1
+
+print rise_time
+print fall_time
+.endc
+

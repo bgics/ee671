@@ -1,7 +1,6 @@
 .lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 
-.include dfxtn_layout_pex.spice
-.include invx1_schematic.spice
+.include dfxtn_schematic.spice
 
 * Supply voltages
 VDD vdd 0 DC 1.8

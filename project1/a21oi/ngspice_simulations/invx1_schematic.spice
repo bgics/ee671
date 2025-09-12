@@ -1,4 +1,0 @@
-.subckt invx1_sch in out vdd vss
-xmp out in vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.26 as=0.302 ad=0.302 ps=3.12 pd=3.12
-xmn out in vss vss sky130_fd_pr__nfet_01v8 l=0.15 w=0.42 as=0.151 ad=0.151 ps=1.52 pd=1.52
-.ends
