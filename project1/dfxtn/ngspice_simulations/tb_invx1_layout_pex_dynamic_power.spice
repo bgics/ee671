@@ -1,0 +1,35 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+.include invx1_layout_pex.spice
+
+VDD vdd 0 DC 1.8
+VSS vss 0 DC 0
+
+.param d_half_slew = 5p
+.param d_rise_point = 10n
+
+VD a 0 PWL(0n 1.8 {d_rise_point - d_half_slew} 1.8 {d_rise_point + d_half_slew} 0)
+
+XDF1 a y vdd vss invx1
+CLOAD y vss 0.5f
+
+.tran 10p 20n
+
+.meas tran i_stable find i(vdd) at=5n
+.meas tran p_static param='abs(i_stable)*1.8'
+
+.meas tran energy_dynamic integ par('i(vdd) * v(vdd)') from=9.5n to=10.5n
+.meas tran p_dynamic param='(abs(energy_dynamic) / 1n) - p_static' 
+
+.control
+run
+
+set color0 = white
+set color1 = black
+set color2 = red
+
+plot V(a) V(y) 
+plot i(vdd)
+.endc
+
+.end

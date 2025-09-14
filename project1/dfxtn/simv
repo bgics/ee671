@@ -1,0 +1,43 @@
+#! /nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/lib/ivl/system.vpi";
+:vpi_module "/nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/nix/store/5pa6zvhx6vw8x6mq661i8yk72rz70bpw-iverilog-12.0/lib/ivl/va_math.vpi";
+S_0x12ae05a40 .scope module, "tb" "tb" 2 3;
+ .timescale -9 -12;
+v0x600002330240_0 .var "a", 0 0;
+v0x6000023302d0_0 .net "y", 0 0, L_0x600003a301c0;  1 drivers
+S_0x12ae04960 .scope module, "uut" "inverter" 2 7, 3 1 0, S_0x12ae05a40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x600003a301c0 .functor NOT 1, v0x600002330240_0, C4<0>, C4<0>, C4<0>;
+v0x600002330120_0 .net "a", 0 0, v0x600002330240_0;  1 drivers
+v0x6000023301b0_0 .net "y", 0 0, L_0x600003a301c0;  alias, 1 drivers
+    .scope S_0x12ae05a40;
+T_0 ;
+    %vpi_call 2 13 "$dumpfile", "dump.vcd" {0 0 0};
+    %vpi_call 2 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x12ae05a40 {0 0 0};
+    %vpi_call 2 15 "$monitor", "Time=%0t | a=%b | y=%b", $time, v0x600002330240_0, v0x6000023302d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600002330240_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600002330240_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600002330240_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call 2 21 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_invx1.v";
+    "invx1.v";

@@ -1,0 +1,32 @@
+.lib $PDK_ROOT/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.include invx1_layout_pex.spice
+
+VDD vdd 0 DC 1.8
+VSS vss 0 DC 0
+
+VD a 0 PWL(0 0 6n 0 6.1n 1.8 12n 1.8 12.1n 0)
+
+XDF1 a y vdd vss invx1
+
+.tran 1p 20n
+
+.meas tran q_rise INTEG par('-i(vd)') from=6n to=7n
+.meas tran q_fall INTEG par('-i(vd)') from=12n to=13n
+
+.meas tran c_rise param='q_rise / 1.8'
+.meas tran c_fall param='-q_fall / 1.8'
+.meas tran c_avg param='(c_rise + c_fall) / 2'
+
+.control
+run
+
+set color0 = white 
+set color1 = black 
+set color2 = red 
+
+plot v(a) 
+plot -i(vd)
+
+.endc
+
+.end

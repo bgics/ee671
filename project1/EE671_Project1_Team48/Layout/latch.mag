@@ -1,0 +1,100 @@
+magic
+tech sky130A
+timestamp 1757512579
+<< nwell >>
+rect -30 217 -6 301
+rect 270 217 288 301
+rect 564 217 582 301
+rect 843 217 861 301
+<< locali >>
+rect 511 194 528 205
+rect -24 122 -6 194
+rect 270 158 288 194
+rect 511 176 582 194
+rect 843 176 861 230
+rect 270 104 288 140
+<< viali >>
+rect 72 247 90 265
+rect 374 212 392 230
+rect 131 176 149 194
+rect -24 104 -6 122
+rect 425 176 443 194
+rect 983 212 1001 230
+rect 940 176 958 194
+rect 270 140 288 158
+rect 564 104 582 122
+<< metal1 >>
+rect -30 299 -6 323
+rect 270 299 288 323
+rect 564 299 582 323
+rect 843 299 861 323
+rect 72 268 90 271
+rect 69 265 93 268
+rect 69 247 72 265
+rect 90 247 93 265
+rect 69 244 93 247
+rect 72 230 90 244
+rect 371 230 395 233
+rect 980 230 1004 233
+rect -30 212 90 230
+rect 368 212 374 230
+rect 392 212 983 230
+rect 1001 212 1007 230
+rect 371 209 395 212
+rect 980 209 1004 212
+rect 128 194 152 197
+rect 422 194 446 197
+rect 937 194 961 197
+rect 125 176 131 194
+rect 149 176 425 194
+rect 443 176 449 194
+rect 934 176 940 194
+rect 958 176 1122 194
+rect 128 173 152 176
+rect 422 173 446 176
+rect 937 173 961 176
+rect 267 158 291 161
+rect -30 140 270 158
+rect 288 140 1122 158
+rect 267 137 291 140
+rect -27 122 -3 125
+rect 561 122 585 125
+rect -30 104 -24 122
+rect -6 104 564 122
+rect 582 104 1122 122
+rect -27 101 -3 104
+rect 561 101 585 104
+rect -30 27 -6 51
+rect 270 27 288 51
+rect 564 27 582 51
+rect 843 27 861 51
+use invx1  invx1_0
+timestamp 1757507963
+transform 1 0 672 0 1 53
+box -90 -26 171 270
+use invx1  invx1_1
+timestamp 1757507963
+transform 1 0 951 0 1 53
+box -90 -26 171 270
+use tg  tg_0
+timestamp 1757503350
+transform 1 0 99 0 1 53
+box -105 -26 171 270
+use tg  tg_1
+timestamp 1757503350
+transform 1 0 393 0 1 53
+box -105 -26 171 270
+<< labels >>
+rlabel metal1 -19 221 -19 221 1 in
+port 1 n
+rlabel metal1 1119 185 1119 185 1 out
+port 2 n
+rlabel metal1 -26 149 -26 149 1 en
+port 3 n
+rlabel metal1 -27 114 -27 114 1 enb
+port 4 n
+rlabel metal1 -20 311 -20 311 1 vdd
+port 5 n
+rlabel metal1 -21 39 -21 39 1 vss
+port 6 n
+<< end >>

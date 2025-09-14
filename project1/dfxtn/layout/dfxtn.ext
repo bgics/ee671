@@ -1,0 +1,158 @@
+timestamp 1757686341
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+use latch latch_1 1 0 2268 0 1 -122
+use latch latch_0 1 0 -252 0 1 -122
+use invx1 invx1_2 1 0 4692 0 1 -16
+use invx1 invx1_1 1 0 -1176 0 1 -16
+use invx1 invx1_0 1 0 -654 0 1 -16
+port "vss" 5 -1332 -44 -1332 -44 m1
+port "vdd" 4 -1334 500 -1334 500 m1
+port "c" 3 -1344 174 -1344 174 m1
+port "d" 1 -1338 318 -1338 318 m1
+port "q" 2 5016 320 5016 320 li
+node "m1_1992_n68#" 1 73.4693 1992 -68 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10368 528 0 0 0 0 0 0 0 0 0 0
+node "vss" 0 33.362 -1332 -44 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2304 192 0 0 0 0 0 0 0 0 0 0
+node "m1_1992_16#" 1 77.1833 1992 16 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15408 928 0 0 0 0 0 0 0 0 0 0
+node "m1_1992_230#" 1 54.9445 1992 230 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10368 648 0 0 0 0 0 0 0 0 0 0
+node "m1_1992_476#" 1 71.6507 1992 476 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10368 528 0 0 0 0 0 0 0 0 0 0
+node "vdd" 0 32.814 -1334 500 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2304 192 0 0 0 0 0 0 0 0 0 0
+node "li_2068_86#" 55 101.332 2068 86 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5472 376 7848 500 0 0 0 0 0 0 0 0 0 0
+node "li_n1112_86#" 16 242.675 -1112 86 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1296 144 29808 1720 0 0 0 0 0 0 0 0 0 0
+node "c" 24 229.108 -1344 174 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2016 184 38160 2184 0 0 0 0 0 0 0 0 0 0
+node "li_4512_230#" 13 72.6727 4512 230 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1296 144 2520 204 0 0 0 0 0 0 0 0 0 0
+node "d" 15 207.913 -1338 318 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1296 144 23688 1380 0 0 0 0 0 0 0 0 0 0
+node "q" 13 30.5025 5016 320 li 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1296 144 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_n354_302#" 13 61.0658 -354 302 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1296 144 2520 204 0 0 0 0 0 0 0 0 0 0
+node "w_1992_312#" 1221 108.864 1992 312 nw 0 0 0 0 36288 768 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+substrate "VSUBS" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+cap "d" "vdd" 11.234
+cap "li_2068_86#" "m1_1992_476#" 0.32184
+cap "li_n354_302#" "d" 2.1822
+cap "d" "c" 261.833
+cap "c" "li_n1112_86#" 417.284
+cap "li_n354_302#" "c" 15.5656
+cap "w_1992_312#" "m1_1992_230#" 12.4411
+cap "w_1992_312#" "m1_1992_476#" 11.4435
+cap "w_1992_312#" "li_2068_86#" 4.19547
+cap "m1_1992_16#" "m1_1992_n68#" 101.59
+cap "m1_1992_230#" "m1_1992_16#" 38.1477
+cap "li_2068_86#" "m1_1992_n68#" 2.72328
+cap "m1_1992_476#" "m1_1992_230#" 38.8871
+cap "li_2068_86#" "m1_1992_16#" 161.597
+cap "c" "vss" 9.26316
+cap "li_2068_86#" "m1_1992_230#" 63.6166
+cap "latch_0/vdd" "latch_0/vss" -99.6357
+cap "latch_0/vdd" "latch_0/en" 68.4052
+cap "latch_0/en" "latch_0/in" 40.3289
+cap "latch_0/vss" "latch_0/in" -0.111769
+cap "latch_0/en" "latch_0/tg_1/out" 0.0052234
+cap "latch_0/en" "latch_0/enb" 51.1687
+cap "latch_0/vss" "latch_0/enb" 254.629
+cap "latch_0/en" "invx1_0/in" 99.3044
+cap "latch_0/vss" "invx1_0/in" -5.66481
+cap "latch_0/vdd" "latch_0/in" 34.9975
+cap "latch_0/vdd" "latch_0/enb" 23.5695
+cap "latch_0/vss" "latch_0/en" 45.4388
+cap "latch_0/vdd" "invx1_0/in" 147.905
+cap "latch_0/in" "latch_0/tg_1/in" 0.15493
+cap "latch_0/tg_1/out" "latch_0/in" 0.20078
+cap "invx1_0/in" "latch_0/tg_1/in" 0.0252998
+cap "latch_0/enb" "latch_0/in" 64.4857
+cap "invx1_0/in" "latch_0/in" 5.58445
+cap "invx1_0/in" "latch_0/tg_1/out" 2.88215
+cap "invx1_0/in" "latch_0/enb" 92.6162
+cap "latch_1/vss" "latch_1/enb" 0.0497102
+cap "latch_0/in" "latch_0/tg_1/in" 0.15493
+cap "latch_1/enb" "latch_0/in" 0.0364531
+cap "latch_1/enb" "latch_0/tg_1/out" 0.0364262
+cap "latch_1/enb" "latch_1/en" 0.122866
+cap "latch_1/enb" "invx1_0/in" 0.0133067
+cap "latch_1/vss" "latch_1/en" 0.0028508
+cap "latch_1/tg_1/out" "latch_0/tg_1/in" 0.00564459
+cap "latch_1/en" "latch_0/tg_1/in" 2.22175
+cap "latch_1/in" "latch_0/tg_1/in" 12.0657
+cap "latch_1/en" "latch_1/invx1_1/in" 0.0422058
+cap "latch_1/in" "latch_1/invx1_1/in" 0.0157001
+cap "latch_1/en" "latch_1/tg_1/out" 0.857928
+cap "latch_1/in" "latch_1/tg_1/out" 5.97742
+cap "latch_1/enb" "latch_0/tg_1/in" 12.8454
+cap "latch_1/vss" "latch_0/tg_1/in" 3.62292
+cap "latch_1/in" "latch_1/en" 4.36654
+cap "latch_0/tg_1/out" "latch_1/en" 0.125312
+cap "latch_1/enb" "latch_1/en" 31.8755
+cap "latch_0/tg_1/out" "latch_1/in" 0.220246
+cap "latch_1/enb" "latch_1/in" 21.1867
+cap "latch_1/enb" "latch_0/tg_1/out" 0.0453711
+cap "latch_1/vss" "latch_1/en" 6.74207
+cap "latch_1/vss" "latch_1/in" 0.429695
+cap "latch_1/vss" "latch_1/enb" 0.229866
+cap "latch_1/vdd" "latch_0/tg_1/in" 19.599
+cap "latch_1/vdd" "latch_1/en" -1.77636e-15
+cap "latch_1/vdd" "latch_1/in" 13.6432
+cap "latch_1/vdd" "latch_1/enb" 2.65659
+cap "latch_1/en" "latch_1/tg_1/in" 0.13247
+cap "latch_1/in" "latch_1/tg_1/in" 0.193623
+cap "latch_1/vss" "latch_1/out" 0.245984
+cap "latch_1/vss" "latch_1/enb" 0.0127459
+cap "latch_1/enb" "invx1_2/out" 0.00936187
+cap "latch_1/in" "latch_1/tg_1/in" 0.15493
+cap "latch_1/enb" "latch_1/out" 0.00719735
+cap "latch_1/enb" "latch_1/tg_1/out" 0.022764
+cap "latch_1/en" "latch_1/tg_1/out" 0.0200797
+cap "latch_1/tg_1/vdd" "invx1_2/out" 0.111434
+cap "latch_1/tg_1/vdd" "latch_1/tg_1/in" 25.5286
+cap "latch_1/tg_1/vss" "latch_1/tg_1/in" 6.77908
+cap "latch_1/tg_1/vdd" "latch_1/out" 15.0562
+cap "latch_1/tg_1/vss" "latch_1/out" 7.58177
+cap "invx1_2/out" "latch_1/tg_1/en" 0.943911
+cap "latch_1/tg_1/in" "invx1_2/out" 13.3816
+cap "latch_1/tg_1/vss" "latch_1/tg_1/vdd" -5.15129
+cap "latch_1/out" "latch_1/tg_1/en" 1.2368
+cap "latch_1/out" "invx1_2/out" 0.532369
+cap "latch_1/tg_1/enb" "invx1_2/out" 0.943911
+cap "latch_1/out" "latch_1/tg_1/in" 8.8026
+cap "latch_1/tg_1/enb" "latch_1/out" 1.46703
+merge "latch_0/out" "latch_1/in" -76.0392 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -144 0 0 0 0 0 0 0 0 0 0
+merge "latch_1/in" "m1_1992_230#"
+merge "invx1_2/vss" "latch_1/tg_1/vss" -233.325 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2304 -672 0 0 0 0 0 0 0 0 0 0
+merge "latch_1/tg_1/vss" "latch_0/invx1_1/vss"
+merge "latch_0/invx1_1/vss" "latch_0/tg_1/vss"
+merge "latch_0/tg_1/vss" "latch_1/VSUBS"
+merge "latch_1/VSUBS" "latch_1/vss"
+merge "latch_1/vss" "m1_1992_n68#"
+merge "m1_1992_n68#" "invx1_0/vss"
+merge "invx1_0/vss" "latch_0/vss"
+merge "latch_0/vss" "invx1_1/vss"
+merge "invx1_1/vss" "vss"
+merge "vss" "latch_0/VSUBS"
+merge "latch_0/VSUBS" "VSUBS"
+merge "invx1_2/vdd" "latch_1/tg_1/vdd" -314.101 0 0 0 0 0 -1680 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2304 -672 0 0 0 0 0 0 0 0 0 0
+merge "latch_1/tg_1/vdd" "latch_0/invx1_1/vdd"
+merge "latch_0/invx1_1/vdd" "latch_0/tg_1/vdd"
+merge "latch_0/tg_1/vdd" "invx1_0/vdd"
+merge "invx1_0/vdd" "latch_1/vdd"
+merge "latch_1/vdd" "m1_1992_476#"
+merge "m1_1992_476#" "w_1992_312#"
+merge "w_1992_312#" "latch_0/vdd"
+merge "latch_0/vdd" "invx1_1/vdd"
+merge "invx1_1/vdd" "vdd"
+merge "latch_0/tg_1/en" "invx1_1/out" -339.921 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1296 -144 0 -216 0 0 0 0 0 0 0 0 0 0
+merge "invx1_1/out" "latch_1/en"
+merge "latch_1/en" "m1_1992_16#"
+merge "m1_1992_16#" "latch_0/enb"
+merge "latch_0/enb" "li_n1112_86#"
+merge "invx1_2/out" "q" -46.8935 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1296 -144 0 0 0 0 0 0 0 0 0 0 0 0
+merge "latch_0/tg_1/enb" "invx1_1/in" -237.953 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -144 0 -144 0 0 0 0 0 0 0 0 0 0
+merge "invx1_1/in" "latch_1/enb"
+merge "latch_1/enb" "li_2068_86#"
+merge "li_2068_86#" "latch_0/en"
+merge "latch_0/en" "c"
+merge "invx1_2/in" "latch_1/out" -107.204 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1296 -144 -216 -84 0 0 0 0 0 0 0 0 0 0
+merge "latch_1/out" "li_4512_230#"
+merge "invx1_0/out" "latch_0/in" -151.532 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1296 -144 0 -72 0 0 0 0 0 0 0 0 0 0
+merge "latch_0/in" "li_n354_302#"
+merge "invx1_0/in" "d" -195.372 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1296 -144 0 0 0 0 0 0 0 0 0 0 0 0
