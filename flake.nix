@@ -17,7 +17,6 @@
           devShells = {
             default = pkgs.mkShell {
               buildInputs = with pkgs; [
-                ngspice
                 iverilog
                 gtkwave
                 gnuplot
