@@ -20,6 +20,7 @@
                 iverilog
                 gtkwave
                 gnuplot
+                svlan
               ];
             };
           };
