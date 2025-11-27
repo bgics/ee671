@@ -12,6 +12,10 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+          pythonEnv = pkgs.python312.withPackages (ps: with ps; [
+            pillow
+            numpy
+          ]);
         in
         {
           devShells = {
@@ -20,7 +24,7 @@
                 iverilog
                 gtkwave
                 gnuplot
-                svlan
+                pythonEnv
               ];
             };
           };

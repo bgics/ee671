@@ -1,4 +1,8 @@
-module control_block (
+`include "counter.v"
+`include "fifo.v"
+`include "sr.v"
+
+module valid_3x3_generator (
   input wire clk,
   input wire rst,
 
@@ -23,28 +27,19 @@ module control_block (
   output wire [7:0] z8
 );
 
-wire row_clk;
-
 wire [7:0] internal_row;
 wire [7:0] internal_col;
 
 wire [7:0] fifo_1_out;
 wire [7:0] fifo_2_out;
 
-column_counter i_col (
+counter i_counter (
   .clk(clk),
   .rst(rst),
   .pixel_valid(pixel_valid),
   .done(done),
   .col(internal_col),
-  .row_clk(row_clk)
-);
-
-row_counter i_row (
-  .clk(row_clk),
-  .rst(rst),
-  .row(internal_row),
-  .done(done)
+  .row(internal_row)
 );
 
 fifo i_fifo_1 (
@@ -104,16 +99,16 @@ always @(posedge clk) begin
     col <= 0;
     valid_matrix <= 0;
   end else begin 
-    valid_matrix <= (internal_row == 3 && internal_col >= 3) || (internal_row > 3 && (internal_col == 0 || internal_col >= 3));
+    valid_matrix <= internal_row >= 2 && internal_col >= 2;
 
-    if (internal_row > 2) begin 
-      row <= internal_row - 3;
+    if (internal_row > 1) begin 
+      row <= internal_row - 2;
     end else begin
       row <= 0;
     end
 
-    if (internal_col > 2) begin 
-      col <= internal_col - 3;
+    if (internal_col > 1) begin 
+      col <= internal_col - 2;
     end else begin
       col <= 0;
     end

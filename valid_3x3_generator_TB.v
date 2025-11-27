@@ -13,7 +13,7 @@ wire [7:0] row;
 wire [7:0] col;
 wire [7:0] z [8:0];
 
-control_block dut (
+valid_3x3_generator dut (
   .clk(clk),
   .rst(rst),
   .data_in(data_in),
