@@ -1,32 +1,87 @@
 \documentclass[a4paper,12pt]{article}
+
+% --------------------------------------------------
+% Packages
+% --------------------------------------------------
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{geometry}
+\usepackage{setspace}
+\usepackage{lmodern}
+\usepackage{seqsplit}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% --------------------------------------------------
+% Page and typography setup
+% --------------------------------------------------
 \geometry{margin=1in}
+\setstretch{1.15}
+\captionsetup{font=small, labelfont=bf}
+\renewcommand{\familydefault}{\sfdefault}
+
+% --------------------------------------------------
+% Colors and links
+% --------------------------------------------------
+\definecolor{eeBlue}{HTML}{1F4E79}
+\definecolor{eeGray}{HTML}{555555}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=eeBlue,
+  urlcolor=eeBlue,
+  citecolor=eeBlue
+}
+
+% --------------------------------------------------
+% Section formatting
+% --------------------------------------------------
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{eeBlue}}
+  {\thesection}{0.8em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{eeGray}}
+  {\thesubsection}{0.8em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{eeGray}}
+  {\thesubsubsection}{0.8em}{}
 
 \begin{document}
 
+% --------------------------------------------------
+% Title page (adjusted spacing to avoid overflow)
+% --------------------------------------------------
 \begin{titlepage}
 	\centering
 
-	\huge \textbf{EE 671: VLSI Design} \\
-	\vspace{1cm}
+	\vspace*{1.5cm}
 
-	\LARGE \textsc{Course Project 2} \\
-	\vspace{4.5cm}
+	{\Large\color{eeGray}Indian Institute of Technology\par}
+	\vspace{0.3cm}
 
-	\includegraphics[width=0.55\textwidth]{../../icon.png} \\
+	{\huge\bfseries EE 671: VLSI Design \par}
+	\vspace{0.5cm}
 
-	\vspace{4.5cm}
+	{\LARGE\bfseries Course Project 2 \par}
+
+	\vspace{2.5cm} % reduced from 3.5cm
+
+	\includegraphics[width=0.48\textwidth]{../../icon.png} % slightly smaller
+
+	\vspace{2.5cm} % reduced from 3.5cm
 
 	\Large
-	\begin{tabular}{rl}
+	\begin{tabular}{r l}
 		\textbf{Student Names:}   & Bhuvansh Goyal (22B3908)   \\
 		                          & Saarthak Krishan (22B3959) \\
 		                          & Hardik Jangir (22B3901)    \\
-		                          & Sambhavi Jaiswal (24D0545) \\
-		\textbf{Instructor:}      & Prof. Laxmeesha Somappa    \\
+		                          & Sambhavi Jaiswal (24D0545) \\[4pt]
+		\textbf{Instructor:}      & Prof. Laxmeesha Somappa    \\[4pt]
 		\textbf{Submission Date:} & 28 Nov 2025
 	\end{tabular}
 
@@ -35,10 +90,15 @@
 
 \clearpage
 
+% --------------------------------------------------
+% TOC
+% --------------------------------------------------
 \tableofcontents
-
 \clearpage
 
+% --------------------------------------------------
+% Introduction
+% --------------------------------------------------
 \section{Introduction}
 
 The Sobel edge detector operates by convolving the input image with two fixed
@@ -83,6 +143,11 @@ The semantics of the key signals are as follows:
 	      coordinates are valid.
 \end{itemize}
 
+\textbf{System Specifications:}
+The design processes a \(256 \times 256\) image pixel-by-pixel at 250\,MHz.
+The gradient magnitude unit performs automatic min/max clipping, the threshold
+is fully configurable, and the final output is binary—either \(0\) or \(255\).
+
 \begin{figure}[htbp!]
 	\centering
 	\begin{tabular}{c}
@@ -98,13 +163,20 @@ The semantics of the key signals are as follows:
 
 \clearpage
 
+% --------------------------------------------------
+% Pre-Synthesis Waveform
+% --------------------------------------------------
 \section{Pre-Synthesis Waveform}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{pre_synthesis_rtl_waveform.png}
 	\caption{GTKWave waveform before synthesis}
 \end{figure}
 
+% --------------------------------------------------
+% Pre-Synthesis Image Output
+% --------------------------------------------------
 \section{Pre-Synthesis Image Output}
 
 \begin{figure}[htbp!]
@@ -133,9 +205,13 @@ python hex2img.py
 
 This script uses \texttt{Pillow} and \texttt{NumPy} to convert \texttt{output.hex} into a PNG image placed in the project root.
 
+% --------------------------------------------------
+% Synthesis Reports
+% --------------------------------------------------
 \section{Synthesis Reports}
 
 \subsection{Area Report}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=\textwidth]{synthesis_area.png}
@@ -145,6 +221,7 @@ This script uses \texttt{Pillow} and \texttt{NumPy} to convert \texttt{output.he
 \clearpage
 
 \subsection{Summary Report}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=\textwidth]{synthesis_summary.png}
@@ -152,6 +229,7 @@ This script uses \texttt{Pillow} and \texttt{NumPy} to convert \texttt{output.he
 \end{figure}
 
 \subsection{Cell Count Summary}
+
 \begin{table}[htbp!]
 	\centering
 	\caption{Cell statistics from RTL synthesis}
@@ -166,13 +244,20 @@ This script uses \texttt{Pillow} and \texttt{NumPy} to convert \texttt{output.he
 	\end{tabular}
 \end{table}
 
+% --------------------------------------------------
+% Post-Synthesis Waveform
+% --------------------------------------------------
 \section{Post-Synthesis Waveform}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{post_synthesis_rtl_waveform.png}
 	\caption{GTKWave waveform after synthesis}
 \end{figure}
 
+% --------------------------------------------------
+% Post-Synthesis Image Output
+% --------------------------------------------------
 \section{Post-Synthesis Image Output}
 
 \begin{figure}[htbp!]
@@ -192,9 +277,13 @@ This script uses \texttt{Pillow} and \texttt{NumPy} to convert \texttt{output.he
 The \texttt{output.hex} file generated after running \texttt{./run\_incisive.sh} on the server was copied to the local machine.
 The same Python conversion script (\texttt{hex2img.py}) was then executed locally to convert \texttt{output.hex} into a PNG image.
 
+% --------------------------------------------------
+% Physical Design Violation Checks
+% --------------------------------------------------
 \section{Physical Design Violation Checks}
 
 \subsection{DRC Check}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{pnr_drc.png}
@@ -202,6 +291,7 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 \end{figure}
 
 \subsection{Antenna Check}
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.95\textwidth]{pnr_antenna.png}
@@ -222,6 +312,9 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 	\caption{Connectivity check for special cells}
 \end{figure}
 
+% --------------------------------------------------
+% Layout
+% --------------------------------------------------
 \section{Layout}
 
 \begin{figure}[htbp!]
@@ -232,6 +325,9 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 
 \clearpage
 
+% --------------------------------------------------
+% Timing, Area and Power Analysis
+% --------------------------------------------------
 \section{Timing, Area and Power Analysis}
 
 \begin{table}[htbp!]
@@ -253,6 +349,9 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 	\end{tabular}
 \end{table}
 
+% --------------------------------------------------
+% Post Physical Design RTL Waveform
+% --------------------------------------------------
 \section{Post Physical Design RTL Waveform}
 
 \begin{figure}[htbp!]
@@ -263,6 +362,9 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 
 \clearpage
 
+% --------------------------------------------------
+% Post Physical Design Image Output
+% --------------------------------------------------
 \section{Post Physical Design Image Output}
 
 \begin{figure}[htbp!]
@@ -282,4 +384,48 @@ The same Python conversion script (\texttt{hex2img.py}) was then executed locall
 The \texttt{output.hex} file generated after running \texttt{./run\_incisive.sh} on the server was copied to the local machine.
 The same Python conversion script (\texttt{hex2img.py}) was then executed locally to convert \texttt{output.hex} into a PNG image.
 
+\clearpage
+
+% --------------------------------------------------
+% Work Contribution
+% --------------------------------------------------
+\section{Work Contribution}
+
+\subsection*{Bhuvansh Goyal (22B3908)}
+\begin{itemize}
+	\item Worked on:
+	      \begin{itemize}
+		      \item \texttt{sobel\_edge\_detector.v}
+		      \item \texttt{sobel\_edge\_detector\_TB.v}
+		      \item \texttt{valid\_3x3\_generator.v}
+		      \item \texttt{sr.v}
+		      \item \texttt{counter.v}
+		      \item \texttt{fifo.v}
+	      \end{itemize}
+	\item Created the Python script to convert hex to PNG and generated all the
+	      output images for the report.
+\end{itemize}
+
+\subsection*{Hardik Jangir (22B3901)}
+\begin{itemize}
+	\item Worked on:
+	      \begin{itemize}
+		      \item \texttt{sobel\_core.v}
+		      \item \texttt{convolution.v}
+		      \item \texttt{gradient\_magnitude.v}
+		      \item \texttt{threshold\_compare.v}
+	      \end{itemize}
+\end{itemize}
+
+\subsection*{Sambhavi Jaiswal (24D0545)}
+\begin{itemize}
+	\item Did synthesis, post-synthesis verification, physical design, solved DRC
+	      and hold violations during physical design, and performed
+	      post-physical-design verification.
+\end{itemize}
+
+\subsection*{Saarthak Krishan (22B3959)}
+\begin{itemize}
+	\item Prepared and compiled the project report.
+\end{itemize}
 \end{document}
