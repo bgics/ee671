@@ -71,7 +71,7 @@ initial begin
   rst = 0;
 
   @(negedge clk);
-  threshold_value = 128;
+  threshold_value = 192;
   threshold_wr_en = 1;
 
   @(negedge clk);
