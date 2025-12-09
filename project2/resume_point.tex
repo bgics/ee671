@@ -1,0 +1,17 @@
+\begin{flushleft}
+	\vspace{-6pt}
+	\href{https://github.com/bgics/ee671/tree/main/project2}{\textbf{Hardware Sobel Edge Detector} $|$ Course Project}
+	\hfill{ \small{\it( Autumn'24 )}}
+	\\
+
+	\hspace{-3pt}\textit{ \href{https://www.ee.iitb.ac.in/web/people/laxmeesha-somappa/}{Guide: {Prof Laxmeesha Somappa}}
+	$|$ Course: VLSI Design (EE 671)} \\
+	\vspace{-7pt}
+
+	\begin{itemize}[itemsep = -0.75 mm, leftmargin=*]
+		\item Designed a real-time Sobel edge detector in Verilog, implementing a streaming pixel architecture that processes $256 \times 256$ images at 250 MHz using $3 \times 3$ convolution kernels for horizontal and vertical gradient computation
+		\item Developed a pipelined hardware architecture with modular blocks including a valid 3x3 generator using shift registers and FIFOs, and a Sobel core performing gradient magnitude calculation using $L_1$ norm approximation for hardware efficiency
+		\item Implemented configurable threshold mechanism for edge detection, achieving binary output with automatic min/max clipping, and validated functionality through comprehensive testbenches generating hex-format outputs
+		\item Completed full VLSI design flow from RTL to physical design using Cadence tools, achieving post-route timing closure with 0.663 ns setup slack, design area of 51908.40 $\mu$m$^2$, and 23.15 mW total power consumption
+	\end{itemize}
+\end{flushleft}
