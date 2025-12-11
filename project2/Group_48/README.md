@@ -4,13 +4,6 @@
 
 This project implements a hardware Sobel edge detector that processes 256×256 grayscale images at 250 MHz. The design uses the L1 norm (|Gx| + |Gy|) instead of the more expensive L2 norm for gradient magnitude calculation.
 
-## Team Members
-
-- Bhuvansh Goyal (22B3908)
-- Saarthak Krishan (22B3959)
-- Hardik Jangir (22B3901)
-- Sambhavi Jaiswal (24D0545)
-
 ## How It Works
 
 The Sobel edge detector operates by convolving the input image with two 3×3 kernels:
@@ -36,6 +29,24 @@ Performs convolution with Sobel kernels, computes gradient magnitude, applies th
 ### Top-Level Architecture
 
 ![Top-Level Architecture](top_level.png)
+
+## Results
+
+### Input Image
+
+![Input Image](cameraman.png)
+
+### Output Images at Different Thresholds
+
+The edge detection threshold can be configured to control sensitivity. Below are the results at different threshold values:
+
+| Threshold = 64 | Threshold = 128 | Threshold = 192 |
+|----------------|-----------------|-----------------|
+| ![Output at Threshold 64](cameraman_output_threshold_64.png) | ![Output at Threshold 128](cameraman_output_threshold_128.png) | ![Output at Threshold 192](cameraman_output_threshold_192.png) |
+
+- **Lower threshold (64)**: More edges detected, including noise
+- **Medium threshold (128)**: Balanced edge detection
+- **Higher threshold (192)**: Only strong edges detected
 
 ## Key Features
 
